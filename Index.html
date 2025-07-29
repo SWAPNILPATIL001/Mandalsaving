@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scan & Pay - Mandal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      width: 250px;
+      margin: 20px 0;
+    }
+    form input, form button {
+      margin: 10px;
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scan & Pay</h1>
+  <p><strong>UPI ID: 9112693374@kotak811</strong></p>
+  <img src="assets/kotakqr.jpeg" alt="Scan QR Code" />
+
+  <h2>After Payment, Submit Details</h2>
+  <form id="paymentForm">
+    <input type="text" id="payerName" placeholder="Your Name" required /><br>
+    <input type="number" id="amountPaid" placeholder="Amount Paid (₹)" required /><br>
+    <input type="text" id="txnId" placeholder="Transaction ID / UTR" required /><br>
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
+
+  <!-- Your JS logic -->
+  <script src="main.js"></script>
+</body>
+</html>
