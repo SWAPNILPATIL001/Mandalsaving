@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard - Mandal Saving</title>
-  <script type="module" src="dashboard.js"></script>
+  <title>User Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
 </head>
 <body>
-  <h2>Welcome to Your Dashboard</h2>
-  <div id="profile"></div>
-  <button onclick="logout()">Logout</button>
+  <div class="dashboard-container">
+    <h1>Welcome to Mandal Saving</h1>
+    <div id="userProfile"></div>
+
+    <h2>Scan to Pay</h2>
+    <img src="Kotakqr.jpg" alt="QR Code" style="width: 300px; height: auto;"/>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById("userProfile").innerHTML =
+          `<p><strong>Name:</strong> ${user.displayName || "Not provided"}</p>
+           <p><strong>Email:</strong> ${user.email}</p>`;
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => window.location.href = "login.html");
+    }
+  </script>
 </body>
 </html>
