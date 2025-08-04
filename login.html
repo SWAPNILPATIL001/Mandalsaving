@@ -1,137 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - MandalSaving</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f1f1f1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 90%;
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      background-color: #007bff;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .bottom-text {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .bottom-text a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .qr-img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto 15px auto;
-      border-radius: 8px;
-    }
-  </style>
-
-  <!-- Firebase Config -->
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCMzIzcShaNZrAtmxAE-_sY2JQuXn_zOdg",
-      authDomain: "mandalsaving.firebaseapp.com",
-      projectId: "mandalsaving",
-      storageBucket: "mandalsaving.appspot.com",
-      messagingSenderId: "383737474637",
-      appId: "1:383737474637:web:27a89d42deaf12337b7604",
-      measurementId: "G-20NVPLXBK2"
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="container">
-    <!-- Your image -->
-    <img src="IMG_0135.jpeg" alt="Banner" class="qr-img">
-
-    <h2>User Login</h2>
+    <img src="IMG_0135.jpeg" alt="QR or Banner" class="qr-img" />
+    <h2>Login</h2>
 
     <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required>
-      <input type="password" id="loginPassword" placeholder="Password" required>
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
       <button type="submit">Login</button>
     </form>
 
     <div class="bottom-text">
-      Don't have an account? <a href="register.html">Register</a>
+      Don't have an account? <a href="signup.html">Register</a>
     </div>
   </div>
 
-  <!-- Login Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const loginForm = document.getElementById("loginForm");
-
-      loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            alert("Login successful!");
-            window.location.href = "dashboard.html"; // You can change this
-          })
-          .catch((error) => {
-            alert("Login failed: " + error.message);
-          });
-      });
-    });
-  </script>
+  <!-- Use login.js as module -->
+  <script type="module" src="login.js"></script>
 </body>
 </html>
