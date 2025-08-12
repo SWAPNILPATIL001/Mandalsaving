@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - MandalSaving</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Login - Mandal Saving</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <img src="IMG_0135.jpeg" alt="QR or Banner" class="qr-img" />
-    <h2>Login</h2>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="dashboard.html">Profile</a></li>
+      <li><a href="qr.html">QR Payment</a></li>
+    </ul>
+  </nav>
 
+  <section class="content">
+    <h2>Login</h2>
     <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required />
-      <input type="password" id="loginPassword" placeholder="Password" required />
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
       <button type="submit">Login</button>
     </form>
+  </section>
 
-    <div class="bottom-text">
-      Don't have an account? <a href="signup.html">Register</a>
-    </div>
-  </div>
-
-  <!-- Use login.js as module -->
-  <script type="module" src="login.js"></script>
+  <script src="firebase.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>
