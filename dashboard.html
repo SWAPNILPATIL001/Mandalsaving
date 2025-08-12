@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Profile - Mandal Saving</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="firebase.js"></script>
 </head>
 <body>
-  <div class="dashboard-container">
-    <h1>Welcome to Mandal Saving</h1>
-    <div id="userProfile"></div>
 
-    <h2>Scan to Pay</h2>
-    <img src="Kotakqr.jpg" alt="QR Code" style="width: 300px; height: auto;"/>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="dashboard.html">Profile</a></li>
+      <li><a href="qr.html">QR Payment</a></li>
+    </ul>
+  </nav>
 
-    <button onclick="logout()">Logout</button>
-  </div>
+  <section class="content">
+    <h2>Welcome, <span id="userEmail"></span></h2>
+    <button id="logoutBtn">Logout</button>
+  </section>
 
+  <script src="firebase.js"></script>
   <script>
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        document.getElementById("userProfile").innerHTML =
-          `<p><strong>Name:</strong> ${user.displayName || "Not provided"}</p>
-           <p><strong>Email:</strong> ${user.email}</p>`;
+        document.getElementById('userEmail').innerText = user.email;
       } else {
-        window.location.href = "login.html";
+        window.location.href = 'login.html';
       }
     });
 
-    function logout() {
-      firebase.auth().signOut().then(() => window.location.href = "login.html");
-    }
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        window.location.href = 'login.html';
+      });
+    });
   </script>
 </body>
 </html>
